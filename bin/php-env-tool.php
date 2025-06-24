@@ -29,6 +29,8 @@ function getKey(bool $generate = false)
     }
   }
 
+  $key = hash('sha256', $key, true);
+
   return $key;
 }
 
@@ -118,7 +120,7 @@ $command = $args[0] ?? null;
 $targetFile = $args[1] ?? null;
 
 if (!$command || !in_array($command, ['encrypt', 'decrypt'])) {
-  echo "Usage: encrypt|decrypt [file] [--force] [--silent] [--generate]\n";
+  echo "Usage: encrypt|decrypt [file] [--force] [--silent] [--generate] [--output=file]\n";
   exit(1);
 }
 
