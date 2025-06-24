@@ -60,6 +60,8 @@ php php-env-tool.php encrypt --generate
    php-env-tool encrypt --generate --silent
    ```
 
+> ⚠️ Make sure to remember your key — there's no recovery!
+
 ---
 
 ## 🔐 Example Commands
