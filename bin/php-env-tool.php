@@ -32,9 +32,9 @@ function getKey(bool $generate = false)
   return $key;
 }
 
-function encryptFile($file, $key, $force = false, $silent = false)
+function encryptFile($file, $key, $force = false, $silent = false, $outputOverride = null)
 {
-  $output = "$file.enc";
+  $output = $outputOverride ?? "$file.enc";
   if (file_exists($output) && !$force) {
     echo "⚠️ $output exists. Overwrite? [y/N]: ";
     $input = strtolower(trim(fgets(STDIN)));
@@ -60,7 +60,7 @@ function encryptFile($file, $key, $force = false, $silent = false)
     echo "✅ Encrypted $file → $output\n";
 }
 
-function decryptFile($file, $key, $force = false, $silent = false)
+function decryptFile($file, $key, $force = false, $silent = false, $outputOverride = null)
 {
   if (!file_exists($file)) {
     if (!$silent)
@@ -68,7 +68,7 @@ function decryptFile($file, $key, $force = false, $silent = false)
     exit(1);
   }
 
-  $output = preg_replace('/\.enc$/', '', $file);
+  $output = $outputOverride ?? preg_replace('/\.enc$/', '', $file);
   if (file_exists($output) && !$force) {
     echo "⚠️ $output exists. Overwrite? [y/N]: ";
     $input = strtolower(trim(fgets(STDIN)));
@@ -104,6 +104,13 @@ $generate = in_array('--generate', $argv);
 $force = in_array('--force', $args);
 $silent = in_array('--silent', $args);
 
+$outputTo = null;
+foreach ($argv as $arg) {
+  if (str_starts_with($arg, '--output=')) {
+    $outputTo = substr($arg, 9); // after "--output="
+  }
+}
+
 $args = array_filter($args, fn($a) => !str_starts_with($a, '--'));
 $args = array_values($args); // reindex
 
@@ -138,8 +145,10 @@ if ($targetFile) {
 foreach ($files as $file) {
   if (!is_file($file))
     continue;
-  if ($command === 'encrypt')
-    encryptFile($file, $key, $force, $silent);
-  elseif ($command === 'decrypt')
-    decryptFile($file, $key, $force, $silent);
+
+  if ($command === 'encrypt') {
+    encryptFile($file, $key, $force, $silent, count($files) === 1 ? $outputTo : null);
+  } elseif ($command === 'decrypt') {
+    decryptFile($file, $key, $force, $silent, count($files) === 1 ? $outputTo : null);
+  }
 }

@@ -15,6 +15,7 @@ Supports multiple `.env` variants (e.g. `.env.local`, `.env.prod`), interactive 
   - `--generate`: generate a secure key automatically
   - `--force`: overwrite files without prompt
   - `--silent`: suppress all output
+  - `--output=<file>`: specify output filename for single-file ops
 
 ---
 
@@ -69,6 +70,8 @@ php php-env-tool.php encrypt --generate
 | Encrypt and auto-generate key | `php php-env-tool.php encrypt --generate` |
 | Decrypt `.env.prod.enc` with ENV var | `ENV_KEY=<yourkey> php php-env-tool.php decrypt .env.prod.enc` |
 | Encrypt quietly with overwrite | `php php-env-tool.php encrypt --force --silent` |
+| Encrypt `.env.prod` and output to `.env` | `php env-tool.php encrypt .env.prod --output=.env` |
+| Decrypt `.env.prod.enc` to `.env` | `php env-tool.php decrypt .env.prod.enc --output=.env` |
 
 ---
 

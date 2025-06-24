@@ -2,7 +2,7 @@
   "name": "atifmustaffa/php-env-tool",
   "description": "PHP CLI .env encryption/decryption tool",
   "homepage": "https://github.com/atifmustaffa/php-env-tool",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "project",
   "authors": [
     {
