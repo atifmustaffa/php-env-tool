@@ -32,6 +32,12 @@ Or decrypt:
 curl -s https://raw.githubusercontent.com/atifmustaffa/php-env-tool/main/bin/php-env-tool.php | ENV_KEY=<yourkey> php -- decrypt .env.prod.enc
 ```
 
+Or if there is any error, download it first and run:
+```bash
+curl -s -o php-env-tool.php https://raw.githubusercontent.com/atifmustaffa/php-env-tool/main/bin/php-env-tool.php
+php php-env-tool.php encrypt --generate
+```
+
 ---
 
 ### 📦 Option 2: Install globally via Composer
