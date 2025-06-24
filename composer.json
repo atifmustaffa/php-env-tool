@@ -1,0 +1,19 @@
+{
+  "name": "atifmustaffa/php-env-tool",
+  "description": "PHP CLI .env encryption/decryption tool",
+  "homepage": "https://github.com/atifmustaffa/php-env-tool",
+  "version": "1.0.0",
+  "type": "project",
+  "authors": [
+    {
+      "name": "Atif Mustaffa"
+    }
+  ],
+  "license": "MIT",
+  "bin": [
+    "bin/php-env-tool.php"
+  ],
+  "require": {},
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
