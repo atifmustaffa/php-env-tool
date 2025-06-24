@@ -19,6 +19,15 @@ Supports multiple `.env` variants (e.g. `.env.local`, `.env.prod`), interactive 
 
 ---
 
+## 🔁 Compatibility
+
+This PHP encryption tool is fully compatible with the browser-based [JavaScript version](https://github.com/atifmustaffa/js-env-tool-web). Both tools use the same algorithm: AES-256-CBC with a SHA-256 hashed key and base64 encoding.
+
+- You can encrypt using the PHP CLI tool and decrypt in the browser
+- Or encrypt in the browser and decrypt using the PHP script
+
+---
+
 ## 🚀 Usage
 
 ### ☁️ Option 1: Run via `curl`
